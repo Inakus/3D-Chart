@@ -23,8 +23,10 @@ function App() {
         const valuesArray = [];
 
         // Iterating data to get column name and their values
-        results.data.map((d) => {
-          rowsArray.push(Object.keys(d));
+        results.data.map((d, index) => {
+          if (index === 0) {
+            rowsArray.push(Object.keys(d));
+          }
           valuesArray.push(Object.values(d));
         });
 
@@ -32,15 +34,30 @@ function App() {
         setParsedData(results.data);
 
         // Filtered Column Names
-        setTableRows(rowsArray[0]);
-
+        rowsArray[0].map((e, index) => {
+          if (index % 2 === 0) {
+            setTableRows((prev) => {
+              return [...prev, e];
+            });
+          }
+        });
         // Filtered Values
-        setValues(valuesArray);
+        valuesArray.map((e) => {
+          const temp = [];
+          e.map((elemnt, index) => {
+            if (index % 2 === 0) {
+              temp.push(elemnt);
+            }
+          });
+          setValues((prev) => {
+            return [...prev, temp];
+          });
+        });
       },
     });
   };
 
-  console.log(parsedData);
+  console.log(values);
 
   return (
     <div>
