@@ -3,7 +3,7 @@ import Papa from "papaparse";
 import dynamic from "next/dynamic";
 const Plot = dynamic(() => import("react-plotly.js"), { ssr: false });
 
-function App() {
+export default function App() {
   const [tableRows, setTableRows] = useState();
 
   const [values, setValues] = useState();
@@ -26,36 +26,14 @@ function App() {
     });
   };
 
-  const randoNumberGenerator = (min, max) => {
-    return Math.floor(Math.random() * (max - min) + min);
-  };
-
-  useEffect(() => {
-    const x = [];
-    const z = [];
-    for (let i = 0; i < 40; i++) {
-      x.push(i + 1);
-      const z_row = [];
-      for (let j = 0; j < 40; j++) {
-        z_row.push(randoNumberGenerator(-10, 10));
-      }
-      z.push(z_row);
-    }
-    setTableRows(x);
-    setValues(z);
-  }, []);
-
-  console.log(values);
-  console.log(tableRows);
-
   return (
     <div>
       <input
+        className="file-input file-input-bordered file-input-primary w-full max-w-xs"
         type="file"
         name="file"
         onChange={changeHandler}
         accept=".csv"
-        style={{ display: "block", margin: "10px auto" }}
       />
       <Plot
         data={[
@@ -71,5 +49,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
