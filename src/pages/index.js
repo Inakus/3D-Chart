@@ -20,6 +20,8 @@ function App() {
           rowsArray.push(Object.keys(d));
           valuesArray.push(Object.values(d));
         });
+        setTableRows(rowsArray);
+        setValues(valuesArray);
       },
     });
   };
