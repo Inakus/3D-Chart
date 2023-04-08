@@ -8,6 +8,7 @@ export default function RandomChart() {
 
   const [minValue, setMinValue] = useState(-10);
   const [maxValue, setMaxValue] = useState(10);
+  const [size, setSize] = useState(40);
 
   const [changeValue, setChangeValue] = useState(false);
 
@@ -22,6 +23,10 @@ export default function RandomChart() {
     setMinValue(event.target.value);
   };
 
+  const changeSize = (event) => {
+    setSize(event.target.value);
+  };
+
   const handleClick = () => {
     setChangeValue(!changeValue);
   };
@@ -29,10 +34,10 @@ export default function RandomChart() {
   useEffect(() => {
     const x = [];
     const z = [];
-    for (let i = 0; i < 40; i++) {
+    for (let i = 0; i < size; i++) {
       x.push(i + 1);
       const z_row = [];
-      for (let j = 0; j < 40; j++) {
+      for (let j = 0; j < size; j++) {
         z_row.push(randoNumberGenerator(minValue, maxValue));
       }
       z.push(z_row);
@@ -43,7 +48,7 @@ export default function RandomChart() {
 
   return (
     <main className="min-h-screen flex flex-col justify-center align-middle items-center">
-      <div className="flex gap-6 mb-5">
+      <div className="flex gap-6 mb-5 lg:flex-row sm:flex-col">
         <div className="form-control w-full max-w-xs">
           <label className="label">
             <span className="label-text">Minimal Value</span>
@@ -66,6 +71,17 @@ export default function RandomChart() {
             className="input input-bordered w-full max-w-xs"
           />
         </div>
+        <div className="form-control w-full max-w-xs">
+          <label className="label">
+            <span className="label-text">Size</span>
+          </label>
+          <input
+            onChange={changeSize}
+            type="number"
+            placeholder="Maxium Value"
+            className="input input-bordered w-full max-w-xs"
+          />
+        </div>
       </div>
       <button onClick={handleClick} className="btn mb-5">
         Generate
@@ -80,11 +96,12 @@ export default function RandomChart() {
           },
         ]}
         layout={{
-          width: 1000,
-          height: 1000,
+          width: 600,
+          height: 600,
           title: "Random Generated Chart",
           paper_bgcolor: "rgba(0,0,0,0)",
           plot_bgcolor: "rgba(0,0,0,0)",
+          showlegend: false,
         }}
         config={{ displayModeBar: false }}
       />

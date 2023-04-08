@@ -1,6 +1,6 @@
 export default function HowItsWork() {
   return (
-    <div className="hero min-h-screen bg-base-100">
+    <main className="hero min-h-screen bg-base-100">
       <div className="hero-content text-center">
         <div className="max-w-md">
           <h1 className="text-7xl font-bold">Hello there</h1>
@@ -14,6 +14,6 @@ export default function HowItsWork() {
           </p>
         </div>
       </div>
-    </div>
+    </main>
   );
 }

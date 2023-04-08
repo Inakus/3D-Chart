@@ -45,10 +45,11 @@ export default function FileChart() {
           },
         ]}
         layout={{
-          width: 1000,
-          height: 1000,
+          width: 600,
+          height: 600,
           paper_bgcolor: "rgba(0,0,0,0)",
           plot_bgcolor: "rgba(0,0,0,0)",
+          showlegend: false,
         }}
         config={{ displayModeBar: false }}
       />
