@@ -28,10 +28,10 @@ export default function Navbar() {
             </a>
             <ul className="p-2 bg-base-100">
               <li>
-                <a>Random Generated</a>
+                <Link href="/randomChart">Random Generated</Link>
               </li>
               <li>
-                <a>From File</a>
+                <Link href="/fileChart">From File</Link>
               </li>
             </ul>
           </li>

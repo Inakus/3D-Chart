@@ -79,7 +79,14 @@ export default function RandomChart() {
             x: tableRows,
           },
         ]}
-        layout={{ width: 1000, height: 1000 }}
+        layout={{
+          width: 1000,
+          height: 1000,
+          title: "Random Generated Chart",
+          paper_bgcolor: "rgba(0,0,0,0)",
+          plot_bgcolor: "rgba(0,0,0,0)",
+        }}
+        config={{ displayModeBar: false }}
       />
     </main>
   );
